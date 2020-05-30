@@ -1,0 +1,43 @@
+﻿<package>
+  <!-- dependencies -->
+  <resource id="WshJest">https://github.com/tuckn/WshJest.git</resource>
+  <resource id="WshPolyfill">https://github.com/tuckn/WshPolyfill.git</resource>
+
+  <!-- scripts: test -->
+  <job id = "test:Util">
+    <script language="JScript" src="./WshModules/WshPolyfill/dist/bundle.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+    <script language="JScript" src="./WshModules/WshJest/dist/app.js"></script>
+    <script language="JScript" src="./src/Util.test.js"></script>
+  </job>
+
+  <!-- scripts: build -->
+  <job id = "./dist/module.js">
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+  </job>
+  <job id = "./dist/module.vbs">
+    <script language="VBScript" src="./src/Util.vbs"></script>
+  </job>
+  <job id = "./dist/bundle.js">
+    <script language="JScript" src="./WshModules/WshPolyfill/dist/bundle.js"></script>
+    <script language="JScript" src="./src/ConstJScript.js"></script>
+    <script language="JScript" src="./src/ConstVBScript.js"></script>
+    <script language="JScript" src="./src/Util.js"></script>
+  </job>
+
+  <!-- scripts: test dist -->
+  <job id = "test:dist:module">
+    <script language="JScript" src="./WshModules/WshPolyfill/dist/bundle.js"></script>
+    <script language="JScript" src="./dist/module.js"></script>
+    <script language="JScript" src="./WshModules/WshJest/dist/app.js"></script>
+    <script language="JScript" src="./src/Util.test.js"></script>
+  </job>
+  <job id = "test:dist:bundle">
+    <script language="JScript" src="./dist/bundle.js"></script>
+    <script language="JScript" src="./WshModules/WshJest/dist/app.js"></script>
+    <script language="JScript" src="./src/Util.test.js"></script>
+  </job>
+</package>
