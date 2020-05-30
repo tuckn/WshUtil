@@ -1,23 +1,25 @@
-﻿/**
+﻿/* eslint no-unused-vars:off */
+
+/**
  * The wrapper object for @tuckn/WshXxxx modules.
  *
  * @global
  * @namespace
  * @type {object}
  */
-var Wsh = {};
-
-/* eslint no-unused-vars:off */
-
-/**
- * The constant values for @tuckn/WshXxxx modules.
- *
- * @memberof Wsh
- * @namespace Constants
- */
-Wsh.Constants = {};
+if (!Wsh) var Wsh = {};
 
 (function () {
+  if (Wsh && Wsh.Constants) return;
+
+  /**
+   * The constant values for @tuckn/WshXxxx modules.
+   *
+   * @memberof Wsh
+   * @namespace Constants
+   */
+  Wsh.Constants = {};
+
   var CD = Wsh.Constants;
 
   CD.nonAutoClosing = 0;

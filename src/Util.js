@@ -1,16 +1,18 @@
 ﻿/* globals Wsh: false */
 
-/**
- * WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash).
- *
- * @namespace Util
- * @memberof Wsh
- * @requires {@link https://github.com/tuckn/WshPolyfill|WshPolyfill}
- * @requires ./ConstJScript.js
- */
-Wsh.Util = {};
-
 (function () {
+  if (Wsh && Wsh.Util) return;
+
+  /**
+   * WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash).
+   *
+   * @namespace Util
+   * @memberof Wsh
+   * @requires {@link https://github.com/tuckn/WshPolyfill|WshPolyfill}
+   * @requires ./ConstJScript.js
+   */
+  Wsh.Util = {};
+
   var util = Wsh.Util;
 
   /** @constant {string} */

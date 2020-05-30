@@ -1,7 +1,7 @@
 {
   "name": "@tuckn/WshUtil",
   "description": "The core module for @tuckn/WshXxxx and WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash).",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tuckn <tuckn333+github@gmail.com>",
   "private": true,
   "license": "MIT",
