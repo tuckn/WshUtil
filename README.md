@@ -1,6 +1,6 @@
-# WSH: Util
+# WshUtil
 
-The core module for @tuckn/WshXxxx and WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash).
+WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and the core module for @tuckn/Wsh series.
 
 ## Operating environment
 
@@ -106,7 +106,7 @@ _.toZenkakuKana('もぅﾏﾁﾞ無理。'); // 'もぅマヂ無理'
 ```
 
 Many other functions are added.
-See the documentation for more details.
+See the [documentation](https://docs.tuckn.net/WshUtil) for more details.
 
 And you can also use all [WshPolyfill](https://github.com/tuckn/WshPolyfill) functions.
 for example,
@@ -123,6 +123,8 @@ console.dir(map1);
 var strJson = JSON.stringify({ from: array1, to: map1 });
 console.log(strJson);
 // Output: '{"from":[1,4,9,16],"to":[2,8,18,32]}'
+
+// and so on...
 ```
 
 ## Documentation

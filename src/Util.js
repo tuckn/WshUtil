@@ -2207,7 +2207,7 @@ lastIndexOf(['A', { b: 'B' }, 'C'], { b: 'B' }); // 1
   /**
    * Options Schema of Wsh.Util.conv2DArrayToObj
    *
-   * @typedef {object} typesConv2DArrayToObjOptions
+   * @typedef {object} typeConv2DArrayToObjOptions
    * @property {number} [beginRow=1] beginRow is convert to the property names
    * @property {number} [beginColumn=1]
    * @property {number} [endRow=arrays.length]
@@ -2226,7 +2226,7 @@ var srcArray = [
   ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'], // to be header
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
   [true, false, null, undefined, NaN, Infinity, ''],
-  ['=SUM(A1:A10)', '=TODAY()', '2020/1/1', '\'007', '日本語'],
+  ['=SUM(X1:Y10)', '=TODAY()', '2020/1/1', '\'007', '日本語'],
   ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
 ];
 
@@ -2259,7 +2259,7 @@ conv2DArrayToObj(srcArray, { beginRow: 2 });
 //      K: undefined,
 //      L: undefined },
 //   {
-//      A: '=SUM(A1:A10)',
+//      A: '=SUM(X1:Y10)',
 //      B: '=TODAY()',
 //      C: '2020/1/1',
 //      D: '\'007',
@@ -2287,7 +2287,7 @@ conv2DArrayToObj(srcArray, { beginRow: 2 });
    * @function conv2DArrayToObj
    * @memberof Wsh.Util
    * @param {array} arrays - The 2D-Array to convert.
-   * @param {typesConv2DArrayToObjOptions} [options] - Optional parameters.
+   * @param {typeConv2DArrayToObjOptions} [options] - Optional parameters.
    * @returns {object} - A converted object.
    */
   util.conv2DArrayToObj = function (arrays, options) {
@@ -2373,7 +2373,7 @@ stringify2DArrayToCsv(array2D);
    * @returns {string} - A converted string.
    */
   util.stringify2DArrayToCsv = function (arrays, options) {
-    var functionName = 'util.conv2DArrayToObj';
+    var functionName = 'util.stringify2DArrayToCsv';
     if (!_isSolidArray(arrays)) throwErrNonArray(functionName, arrays);
 
     var delimiter = _obtain(options, 'delimiter', ',');
@@ -2425,9 +2425,9 @@ stringify2DArrayToCsv(array2D);
    * Options Schema of Wsh.Util.parseCsvTo2DArray
    *
    * @typedef {object} typeParseCsvTo2DArrayOptions
-   * @property {string} [delimiter=","]
-   * @property {string} [lineEnding="\r\n"]
-   * @property {boolean} [addsEmptyRow=false]
+   * @property {string} [delimiter=","] - If parse the TSV. Specify '\t'.
+   * @property {string} [lineEnding="\r\n"] - The character of line-ending.
+   * @property {boolean} [addsEmptyRow=false] - Ignores empty lines or not.
    */
 
   /**
@@ -2436,17 +2436,31 @@ stringify2DArrayToCsv(array2D);
    * @example
 var parseCsvTo2DArray = Wsh.Util.parseCsvTo2DArray; // Shorthand
 
-var csvTxt = 'A,B,C,D,E,F,G,H,I,J,K,L\r\n'
+var csvTxt = 'This CSV was output from Tuckn Hoge system\r\n'
+  + 'A,B,C,D,E,F,G,H,I,J,K,L\r\n'
   + '0,1,2,3,4,5,6,7,8,9,10,11\r\n'
-  + 'true,false,,NaN,Infinity,\r\n' // null to empty, undefined is ignored
-  + 'a,b,c,d,e,f,g,h,i,j,k,l\r\n';
+  + 'a,b,c,d,e,f,g,h,i,j,k,l\r\n'
+  + '\r\n'
+  + 'true,false,null,undefined,NaN,Infinity\r\n'
+  + '=SUM(X1:Y10),=TODAY(),2020/1/1,\'007,Has Space,日本語,I say "Yes!","Line\r\n'
+  + 'Break"'
 
 parseCsvTo2DArray(csvTxt);
 // Returns: [
+//   ['This CSV was output from Tuckn Hoge system'],
 //   ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
 //   ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-//   ['true', 'false', '', 'NaN', 'Infinity', ''],
-//   ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']]
+//   ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+//   [''],
+//   ['true', 'false', 'null', 'undefined', 'NaN', 'Infinity'],
+//   ['=SUM(X1:Y10)',
+//     '=TODAY()',
+//     '2020/1/1',
+//     '\'007',
+//     'Has Space',
+//     '日本語',
+//     'I say "Yes!"',
+//     '"Line\r\nBreak"' ]]
    * @function parseCsvTo2DArray
    * @memberof Wsh.Util
    * @param {string} csvText - The CSV-format string to parse.
@@ -2457,7 +2471,11 @@ parseCsvTo2DArray(csvTxt);
     var functionName = 'util.parseCsvTo2DArray';
     if (!_isSolidString(csvText)) throwErrNonStr(functionName, csvText);
 
-    var parseStr = function (str) {
+    var lineEnding = _obtain(options, 'lineEnding', '\r\n');
+    var delimiter = _obtain(options, 'delimiter', ',');
+    var addsEmptyRow = _obtain(options, 'addsEmptyRow', false);
+
+    var parseStr = function (str) { // {{{
       str = String(str);
 
       // Pattern 1: As empty
@@ -2474,18 +2492,55 @@ parseCsvTo2DArray(csvTxt);
 
       // Pattern 4: Include Double Quotation
       return str.replace(/""/g, '"');
-    };
+    }; // }}}
 
-    var lineEnding = _obtain(options, 'lineEnding', '\r\n');
+    var convLineToArray = function (rowStr, opt) { // {{{
+      var splitedVals = rowStr.split(delimiter);
+      var cells = _obtain(opt, 'resolved', []);
+      var isPending = _obtain(opt, 'isPending', false);
+      var cell = _obtain(opt, 'pendingCell', '');
+      var matchedDQ;
+
+      splitedVals.forEach(function (val) {
+        matchedDQ = val.match(/"/g);
+
+        if (!isPending && !matchedDQ) {
+          cells.push(parseStr(val));
+          return;
+        } else if (!isPending && matchedDQ.length % 2 === 0) {
+          cells.push(parseStr(val));
+          return;
+        } else if (!isPending) { // Lonely Double Quotation
+          cell = val;
+          isPending = true;
+          return;
+        } else if (val.indexOf('"') === -1) {
+          cell += delimiter + val;
+          return;
+        } else if (matchedDQ.length % 2 === 0) {
+          // The lonely Double Quotation found the partner
+          cell += delimiter + val;
+          return;
+        }
+
+        cell += delimiter + val;
+        cells.push(parseStr(cell));
+        isPending = false;
+      });
+
+      return { resolved: cells, pendingCell: cell, isPending: isPending };
+    }; // }}}
+
     var rowStrs = csvText.split(lineEnding);
     if (!_isSolidArray(rowStrs)) throwErrNonArray(functionName, rowStrs);
 
-    var delimiter = _obtain(options, 'delimiter', ',');
-    var addsEmptyRow = _obtain(options, 'addsEmptyRow', false);
-
     var arrays = [];
+    var resolvedCells = [];
+    var pendingCell = '';
+    var isPending = false;
 
     rowStrs.forEach(function (rowStr) {
+      if (isPending) pendingCell += lineEnding;
       // Row Pattern 1: A empty line
       if (rowStr === '') {
         if (addsEmptyRow) arrays.push(['']);
@@ -2494,7 +2549,20 @@ parseCsvTo2DArray(csvTxt);
 
       // Row Pattern 2: The delimiter character is not existing
       if (rowStr.indexOf(delimiter) === -1) {
-        arrays.push([parseStr(rowStr)]);
+        if (isPending) {
+          pendingCell += rowStr;
+
+          var mtchDQ = rowStr.match(/"/g);
+          if (mtchDQ && mtchDQ.length % 2 === 1) {
+            resolvedCells.push(pendingCell);
+            arrays.push(resolvedCells);
+            isPending = false;
+            resolvedCells = [];
+            pendingCell = '';
+          }
+        } else {
+          arrays.push([parseStr(rowStr)]);
+        }
         return;
       }
 
@@ -2502,53 +2570,31 @@ parseCsvTo2DArray(csvTxt);
       // Ex1: hoge, yen, 2,900, foo, => ['hoge', 'yen', '2', '900', 'foo']
       // Ex2: hoge, "yen, 2,900", foo, => ['hoge', 'yen, 2,900', 'foo']
       // Ex3: "hoge", ""foo"", b"ar => [hoge, "foo", b!!Parse Error
-      var splitedVals = rowStr.split(delimiter);
-      var cells = [];
-      var isFinding = false;
-      var cell = '';
-
-      splitedVals.forEach(function (val) {
-        if (!isFinding && val.indexOf('"') === -1) {
-          cells.push(parseStr(val));
-          return;
-        }
-
-        if (!isFinding && (val.match(/"/g).length % 2) === 0) {
-          cells.push(parseStr(val));
-          return;
-        }
-
-        // Lonely Double Quotation
-        if (!isFinding) {
-          cell = val;
-          isFinding = true;
-          return;
-        }
-
-        if (val.indexOf('"') === -1) {
-          cell += delimiter + val;
-          return;
-        }
-
-        // The lonely Double Quotation found the partner
-        if ((val.match(/"/g).length % 2) === 0) {
-          cell += delimiter + val;
-          return;
-        }
-
-        cell += delimiter + val;
-        cells.push(parseStr(cell));
-        isFinding = false;
+      var rtnObj = convLineToArray(rowStr, {
+        resolvedCells: resolvedCells,
+        pendingCell: pendingCell,
+        isPending: isPending
       });
 
-      if (isFinding) {
-        throw new Error('Error: [Faild to parse]\n'
-          + '  at ' + functionName + ' (' + MODULE_TITLE + ')\n'
-          + '  rowStr: ' + _insp(rowStr));
+      if (!rtnObj.isPending) {
+        arrays.push(rtnObj.resolved);
+        isPending = false;
+        resolvedCells = [];
+        pendingCell = '';
+      } else {
+        isPending = true;
+        resolvedCells = rtnObj.resolved;
+        pendingCell = rtnObj.pendingCell;
       }
-
-      arrays.push(cells);
     });
+
+    if (isPending) {
+      throw new Error('Error: [Faild to parse]\n'
+        + '  at ' + functionName + ' (' + MODULE_TITLE + ')\n'
+        + '  resolvedCells: ' + _insp(resolvedCells) + '\n'
+        + '  pendingCell: ' + pendingCell + '\n'
+        + '  arrays: ' + _insp(arrays));
+    }
 
     return arrays;
   }; // }}}

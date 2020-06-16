@@ -41,7 +41,7 @@ var _allTypes = [
 ];
 
 describe('types', function () {
-  test('types.protoTypeOf()', function () {
+  test('types.protoTypeOf', function () {
     var protoTypeOf = util.types.protoTypeOf;
 
     _allTypes.forEach(function (o) {
@@ -49,7 +49,7 @@ describe('types', function () {
     });
   });
 
-  test('types.isDate()', function () {
+  test('types.isDate', function () {
     var isDate = util.types.isDate;
 
     _allTypes.forEach(function (o) {
@@ -61,7 +61,7 @@ describe('types', function () {
     });
   });
 
-  test('types.isRegExp()', function () {
+  test('types.isRegExp', function () {
     var isRegExp = util.types.isRegExp;
 
     _allTypes.forEach(function (o) {
@@ -75,19 +75,19 @@ describe('types', function () {
 });
 
 describe('Using ScriptControl', function () {
-  test('vbsTypeOf() Not working. FIXME', function () {
+  test('vbsTypeOf Not working. FIXME', function () {
     var vbsTypeOf = util.vbsTypeOf;
     expect(vbsTypeOf([1, 2])).toBe(null); // Error オートメーション サーバーはオブジェクトを作成できません。
   });
 
-  test('convToVBArray() Not working. FIXME', function () {
+  test('convToVBArray Not working. FIXME', function () {
     var vbsTypeOf = util.vbsTypeOf;
     expect(vbsTypeOf([1, 2])).toBe('VBArray'); // Error オートメーション サーバーはオブジェクトを作成できません。
   });
 });
 
 describe('Lang', function () {
-  test('isArray()', function () {
+  test('isArray', function () {
     var isArray = util.isArray;
 
     _allTypes.forEach(function (o) {
@@ -99,7 +99,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isBoolean()', function () {
+  test('isBoolean', function () {
     var isBoolean = util.isBoolean;
 
     _allTypes.forEach(function (o) {
@@ -111,7 +111,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isFunction()', function () {
+  test('isFunction', function () {
     var isFunction = util.isFunction;
 
     _allTypes.forEach(function (o) {
@@ -123,7 +123,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isNumber()', function () {
+  test('isNumber', function () {
     var isNumber = util.isNumber;
 
     _allTypes.forEach(function (o) {
@@ -135,7 +135,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isPureNumber()', function () {
+  test('isPureNumber', function () {
     var isPureNumber = util.isPureNumber;
 
     _allTypes.forEach(function (o) {
@@ -151,7 +151,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isObject()', function () {
+  test('isObject', function () {
     var isObject = util.isObject;
 
     _allTypes.forEach(function (o) {
@@ -164,7 +164,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isObjectLike()', function () {
+  test('isObjectLike', function () {
     var isObjectLike = util.isObjectLike;
 
     _allTypes.forEach(function (o) {
@@ -177,7 +177,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isPlainObject()', function () {
+  test('isPlainObject', function () {
     var isPlainObject = util.isPlainObject;
 
     _allTypes.forEach(function (o) {
@@ -189,7 +189,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isString()', function () {
+  test('isString', function () {
     var isString = util.isString;
 
     _allTypes.forEach(function (o) {
@@ -201,7 +201,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isSolidArray()', function () {
+  test('isSolidArray', function () {
     var isSolidArray = util.isSolidArray;
 
     expect(isSolidArray([1])).toBe(true);
@@ -220,7 +220,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isSolidObject()', function () {
+  test('isSolidObject', function () {
     var isSolidObject = util.isSolidObject;
 
     expect(isSolidObject({ a: 'A' })).toBe(true);
@@ -239,7 +239,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isSolidString()', function () {
+  test('isSolidString', function () {
     var isSolidString = util.isSolidString;
 
     expect(isSolidString('a')).toBe(true);
@@ -258,7 +258,7 @@ describe('Lang', function () {
     });
   });
 
-  test('hasContent()', function () {
+  test('hasContent', function () {
     var hasContent = util.hasContent;
 
     // true
@@ -281,7 +281,7 @@ describe('Lang', function () {
     expect(hasContent('')).toBe(false);
   });
 
-  test('isEmpty()', function () {
+  test('isEmpty', function () {
     // isEmpty: Checks if a value is an empty enumerable object
     var isEmpty = util.isEmpty;
 
@@ -306,7 +306,7 @@ describe('Lang', function () {
     expect(isEmpty('a')).toBe(false);
   });
 
-  test('isEqual() isDeepStrictEqual()', function () {
+  test('isEqual isDeepStrictEqual', function () {
     var isEqual = util.isEqual;
 
     // Number, String
@@ -381,7 +381,7 @@ describe('Lang', function () {
   var truthyVals = [true, [], {}, [1], { a: 'A' }, 'a', 99, Infinity,
     new Error(), new Date(), new RegExp('')];
 
-  test('isFalseLike()', function () {
+  test('isFalseLike', function () {
     var isFalseLike = util.isFalseLike;
 
     falsyVals.forEach(function (val) {
@@ -393,7 +393,7 @@ describe('Lang', function () {
     });
   });
 
-  test('isTrueLike()', function () {
+  test('isTrueLike', function () {
     var isTrueLike = util.isTrueLike;
 
     truthyVals.forEach(function (val) {
@@ -405,7 +405,7 @@ describe('Lang', function () {
     });
   });
 
-  test('inspect()', function () {
+  test('inspect', function () {
     var insp = util.inspect;
 
     expect(insp(undefined)).toBe('undefined');
@@ -433,7 +433,7 @@ describe('Lang', function () {
       + '}');
   });
 
-  test('toPlainString()', function () {
+  test('toPlainString', function () {
     var toPlainString = util.toPlainString;
 
     expect(toPlainString(undefined)).toBe('');
@@ -451,7 +451,7 @@ describe('Lang', function () {
 });
 
 describe('String', function () {
-  test('startsWith()', function () {
+  test('startsWith', function () {
     var startsWith = util.startsWith;
 
     expect(startsWith('abc', 'a')).toBe(true);
@@ -481,7 +481,7 @@ describe('String', function () {
     expect(startsWith(200, 1)).toBe(false);
   });
 
-  test('endsWith()', function () {
+  test('endsWith', function () {
     var endsWith = util.endsWith;
 
     expect(endsWith('abc', 'c')).toBe(true);
@@ -511,7 +511,7 @@ describe('String', function () {
     expect(endsWith(100, 9)).toBe(false);
   });
 
-  test('createDateString()', function () {
+  test('createDateString', function () {
     var createDateStr = util.createDateString;
     var dateObj = new Date(2020, 0, 2, 15, 4, 5); // @note 0 -> January
 
@@ -527,7 +527,7 @@ describe('String', function () {
     expect(createDateStr('yyyyMMddTHHmmss', dateObj)).toBe('20200102T150405');
   });
 
-  test('parseTemplateLiteral()', function () {
+  test('parseTemplateLiteral', function () {
     var tmpParser = util.parseTemplateLiteral;
     var vals;
 
@@ -548,7 +548,7 @@ describe('String', function () {
     });
   });
 
-  test('parseDatecode()', function () {
+  test('parseDatecode', function () {
     var parseDatecode = util.parseDatecode;
     var dateObj = new Date(2020, 0, 2, 15, 4, 5); // @note 0 -> January
 
@@ -574,7 +574,7 @@ describe('String', function () {
   var zenUpperEnStr = 'ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ';
   var zenSymbolsStr = '！”＃＄％＆’（）＊＋，－．／：；＜＝＞？＠［￥］＾＿‘｛｜｝￣';
 
-  test('isASCII()', function () {
+  test('isASCII', function () {
     var isASCII = util.isASCII;
     // true
     expect(isASCII(numsStr)).toBe(true);
@@ -595,7 +595,7 @@ describe('String', function () {
     expect(isASCII('偽')).toBe(false);
   });
 
-  test('isSameMeaning()', function () {
+  test('isSameMeaning', function () {
     var isSameMeaning = util.isSameMeaning;
     // true
     expect(isSameMeaning('', '')).toBe(true);
@@ -613,7 +613,7 @@ describe('String', function () {
     expect(isSameMeaning([1], [1])).toBe(false);
   });
 
-  test('isMailAddress() [Exprimental]', function () {
+  test('isMailAddress [Exprimental]', function () {
     var isMailAddress = util.isMailAddress;
 
     expect(isMailAddress('tuckn333@gmail.com')).toBe(true);
@@ -623,7 +623,7 @@ describe('String', function () {
     expect(isMailAddress('tuckn333.github.gmail.com')).toBe(false);
   });
 
-  test('isPhoneNumberInJapan() [W.I.P]', function () {
+  test('isPhoneNumberInJapan [W.I.P]', function () {
     var isPhoneNum = util.isPhoneNumberInJapan;
 
     expect(isPhoneNum('090-1234-5678')).toBe(true);
@@ -639,7 +639,7 @@ describe('String', function () {
     expect(isPhoneNum('110')).toBe(true);
   });
 
-  test('isPhoneNumberLikeInJapan() [W.I.P]', function () {
+  test('isPhoneNumberLikeInJapan [W.I.P]', function () {
     var isPhoneNumLike = util.isPhoneNumberLikeInJapan;
 
     expect(isPhoneNumLike('090-1234-5678')).toBe(true);
@@ -651,7 +651,7 @@ describe('String', function () {
     expect(isPhoneNumLike('110')).toBe(true);
   });
 
-  test('isJapaneseLike() [W.I.P]', function () {
+  test('isJapaneseLike [W.I.P]', function () {
     var isJapaneseLike = util.isJapaneseLike;
 
     expect(isJapaneseLike('山田　太郎')).toBe(true);
@@ -667,7 +667,7 @@ describe('String', function () {
     expect(isJapaneseLike('NIKE')).toBe(false);
   });
 
-  test('isPlaneTextFileExt() [W.I.P]', function () {
+  test('isPlaneTextFileExt [W.I.P]', function () {
     var isPlaneTextFileExt = util.isPlaneTextFileExt;
 
     expect(isPlaneTextFileExt('bat')).toBe(false);
@@ -684,7 +684,7 @@ describe('String', function () {
     expect(isPlaneTextFileExt('.xlsx')).toBe(false);
   });
 
-  test('toHalfWidthEN()', function () {
+  test('toHalfWidthEN', function () {
     var toHalfWidthEN = util.toHalfWidthEN;
 
     expect(toHalfWidthEN(zenNumsStr)).toBe(numsStr);
@@ -703,7 +703,7 @@ describe('String', function () {
     expect(toHalfWidthEN(symbolsStr)).toBe(symbolsStr);
   });
 
-  test('toDoubleByteEN()', function () {
+  test('toDoubleByteEN', function () {
     var toDoubleByteEN = util.toDoubleByteEN;
 
     expect(toDoubleByteEN(numsStr)).toBe(zenNumsStr);
@@ -725,7 +725,7 @@ describe('String', function () {
   var hanKanaStr = 'ｶﾞｷﾞｸﾞｹﾞｺﾞｻﾞｼﾞｽﾞｾﾞｿﾞﾀﾞﾁﾞﾂﾞﾃﾞﾄﾞﾊﾞﾋﾞﾌﾞﾍﾞﾎﾞﾊﾟﾋﾟﾌﾟﾍﾟﾎﾟｳﾞﾜﾞｦﾞｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｯｬｭｮ｡､ｰ｢｣･';
   var zenKanaStr = 'ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴヷヺアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォッャュョ。、ー「」・';
 
-  test('toZenkakuKana()', function () {
+  test('toZenkakuKana', function () {
     var toZenkakuKana = util.toZenkakuKana;
     expect(toZenkakuKana(hanKanaStr)).toBe(zenKanaStr);
 
@@ -745,7 +745,7 @@ describe('String', function () {
     expect(toZenkakuKana(zenSymbolsStr)).toBe(zenSymbolsStr);
   });
 
-  test('toRegExpStr() [W.I.P]', function () {
+  test('toRegExpStr [W.I.P]', function () {
     var toRegExpStr = util.toRegExpStr;
 
     expect(toRegExpStr('3.14(a*(x+y))/b=z^2')).toBe('3\\.14\\(a\\*\\(x\\+y\\)\\)\\/b=z\\^2');
@@ -760,7 +760,7 @@ describe('String', function () {
 });
 
 describe('Object', function () {
-  test('hasOwnProp()', function () {
+  test('hasOwnProp', function () {
     var hasOwnProp = util.hasOwnProp;
 
     var obj = { num: 3, N: null, ud: undefined, str: 'Str', ary: [], obj: {} };
@@ -795,7 +795,7 @@ describe('Object', function () {
     expect(hasOwnProp(instance, 'toString')).toBe(false);
   });
 
-  test('hasInObj()', function () {
+  test('hasInObj', function () {
     var hasInObj = util.hasInObj;
 
     var obj = { num: 3, N: null, ud: undefined, str: 'Str', ary: [], obj: {} };
@@ -830,7 +830,7 @@ describe('Object', function () {
     expect(hasInObj(instance, 'toString')).toBe(true);
   });
 
-  test('hasIn()', function () {
+  test('hasIn', function () {
     var hasIn = util.hasIn;
 
     var obj = { num: 3, N: null, ud: undefined, str: 'Str', ary: [], obj: {} };
@@ -884,7 +884,7 @@ describe('Object', function () {
     expect(hasIn(instance, 'toString')).toBe(true);
   });
 
-  test('merge()', function () {
+  test('merge', function () {
     var merge = util.merge;
 
     var objTarget = { a: { aa: 'AA1', ab: 'AB' }, b: 'B' };
@@ -899,7 +899,7 @@ describe('Object', function () {
     expect(objSource).toEqual({ a: { aa: 'AA2' }, c: 'C' });
   });
 
-  test('extend()', function () {
+  test('extend', function () {
     var extend = util.extend;
 
     var objTarget = { a: { aa: 'AA1', ab: 'AB' }, b: 'B' };
@@ -914,7 +914,7 @@ describe('Object', function () {
     expect(objSource).toEqual({ a: { aa: 'AA2' }, c: 'C' });
   });
 
-  test('cloneDeep()', function () {
+  test('cloneDeep', function () {
     var cloneDeep = util.cloneDeep;
 
     var objSource = { s: 's', a: [1, [2, 3]], o: { nA: 1, nB: { o2: 2 } } };
@@ -924,7 +924,7 @@ describe('Object', function () {
     expect(objSource === objCloned).toBe(false);
   });
 
-  test('get()', function () {
+  test('get', function () {
     var objSource = { a: 1, b: { B: 2 }, c: [3, 4] };
     expect(util.get(objSource, 'a')).toBe(1);
     expect(util.get(objSource, 'A')).toBe(undefined);
@@ -946,7 +946,7 @@ describe('Object', function () {
     expect(util.get(objEmpLike, '', 'defVal')).toEqual('defVal');
   });
 
-  test('set()', function () {
+  test('set', function () {
     var set = util.set;
 
     var objMock, objEspected;
@@ -1005,7 +1005,7 @@ describe('Object', function () {
     });
   });
 
-  test('unset()', function () {
+  test('unset', function () {
     var unset = util.unset;
 
     // var objSrc = { a: 1, b: { B: 2 }, c: [3, 4], d: [{ D: 5 }] };
@@ -1038,7 +1038,7 @@ describe('Object', function () {
     });
   });
 
-  test('obtainPropVal()', function () {
+  test('obtainPropVal', function () {
     var obtain = util.obtainPropVal;
     var objSource = { a: 1, b: { B: 2 }, c: [3, 4] };
     expect(obtain(objSource, 'a')).toBe(1);
@@ -1061,7 +1061,7 @@ describe('Object', function () {
     expect(obtain(objEmpLike, '', 'defVal')).toEqual('defVal');
   });
 
-  test('objToStr() [W.I.P]', function () {
+  test('objToStr [W.I.P]', function () {
     var objToStr = util.objToStr;
     expect(objToStr([1, 2, 3], '', '')).toBe('[1,2,3]');
     expect(objToStr({ a: 'A', b: 'B', c: 'C' }, '', '')).toBe('{a:"A",b:"B",c:"C"}');
@@ -1069,7 +1069,7 @@ describe('Object', function () {
 });
 
 describe('Collection', function () {
-  test('includes()', function () {
+  test('includes', function () {
     var includes = util.includes;
 
     // String
@@ -1137,7 +1137,7 @@ describe('Collection', function () {
 });
 
 describe('Array', function () {
-  test('concat()', function () {
+  test('concat', function () {
     var concat = util.concat;
     var srcArray = [1];
     var concatenatedArray = concat(srcArray, 2, [3], [[4]]);
@@ -1147,7 +1147,7 @@ describe('Array', function () {
     expect(concat([1, 2], [3, 4], 5)).toEqual([1, 2, 3, 4, 5]);
   });
 
-  test('inArray()', function () {
+  test('inArray', function () {
     var inArray = util.inArray;
 
     var falsyArray = [false, undefined, null, 0, NaN, '', 'false', 'FALSE'];
@@ -1170,7 +1170,7 @@ describe('Array', function () {
     expect(inArray(99, truthyArray, 7)).toBe(-1);
   });
 
-  test('last()', function () {
+  test('last', function () {
     var last = util.last;
 
     expect(last([1, 2, 3, 4])).toBe(4);
@@ -1182,7 +1182,7 @@ describe('Array', function () {
     });
   });
 
-  test('lastIndexOf()', function () {
+  test('lastIndexOf', function () {
     var lastIndexOf = util.lastIndexOf;
 
     expect(lastIndexOf(['A', 'B', 'C', 'D'])).toBe(3);
@@ -1204,14 +1204,14 @@ describe('Array', function () {
     });
   });
 
-  test('conv2DArrayToObj()', function () {
+  test('conv2DArrayToObj', function () {
     var conv2dToObj = util.conv2DArrayToObj;
     var srcArray = [
       'This CSV was output from Tuckn Hoge system',
       ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
       [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
       [true, false, null, undefined, NaN, Infinity, ''],
-      ['=SUM(A1:A10)', '=TODAY()', '2020/1/1', '\'007', '日本語'],
+      ['=SUM(X1:Y10)', '=TODAY()', '2020/1/1', '\'007', '日本語'],
       ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
     ];
     var destArray = [
@@ -1242,7 +1242,7 @@ describe('Array', function () {
         K: undefined,
         L: undefined
       }, {
-        A: '=SUM(A1:A10)',
+        A: '=SUM(X1:Y10)',
         B: '=TODAY()',
         C: '2020/1/1',
         D: '\'007',
@@ -1278,9 +1278,8 @@ describe('Array', function () {
     });
   });
 
-  test('stringify and parse CSV', function () {
+  test('stringify2DArrayToCsv', function () {
     var stringifyCSV = util.stringify2DArrayToCsv;
-    var parseCSV = util.parseCsvTo2DArray;
     var srcArray, csvStr;
 
     srcArray = [
@@ -1299,13 +1298,6 @@ describe('Array', function () {
       + 'a,b,c,d,e,f,g,h,i,j,k,l\r\n'
     );
 
-    expect(parseCSV(csvStr)).toEqual([ // Convert to String
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      ['true', 'false', '', 'NaN', 'Infinity', ''],
-      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
-    ]);
-
     // TSV
     csvStr = stringifyCSV(srcArray, { delimiter: '\t' });
     expect(csvStr).toBe(''
@@ -1315,13 +1307,6 @@ describe('Array', function () {
       + 'a\tb\tc\td\te\tf\tg\th\ti\tj\tk\tl\r\n'
     );
 
-    expect(parseCSV(csvStr, { delimiter: '\t' })).toEqual([
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      ['true', 'false', '', 'NaN', 'Infinity', ''],
-      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
-    ]);
-
     csvStr = stringifyCSV(srcArray, { lineEnding: '\n' });
     expect(csvStr).toBe(''
       + 'A,B,C,D,E,F,G,H,I,J,K,L\n'
@@ -1330,32 +1315,19 @@ describe('Array', function () {
       + 'a,b,c,d,e,f,g,h,i,j,k,l\n'
     );
 
-    expect(parseCSV(csvStr, { lineEnding: '\n' })).toEqual([
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      ['true', 'false', '', 'NaN', 'Infinity', ''],
-      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
-    ]);
-
     // Special vals
     srcArray = [
       ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
       [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-      ['2020/1/1', '\'007', 'Has Space', '日本語', 'I say "Oops!"', 'Line\nBreak', 'Foo,Bar,Baz']
+      ['2020/1/1', '\'007', 'Has Space', '日本語', 'I say "Yes!"', 'Line\nBreak', 'Foo,Bar,Baz']
     ];
 
     csvStr = stringifyCSV(srcArray);
     expect(csvStr).toBe(''
       + 'A,B,C,D,E,F,G,H,I,J,K,L\r\n'
       + '0,1,2,3,4,5,6,7,8,9,10,11\r\n'
-      + '2020/1/1,\'007,Has Space,日本語,"I say ""Oops!""","Line\nBreak","Foo,Bar,Baz"\r\n'
+      + '2020/1/1,\'007,Has Space,日本語,"I say ""Yes!""","Line\nBreak","Foo,Bar,Baz"\r\n'
     );
-
-    expect(parseCSV(csvStr)).toEqual([
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      ['2020/1/1', '\'007', 'Has Space', '日本語', 'I say "Oops!"', 'Line\nBreak', 'Foo,Bar,Baz']
-    ]);
 
     // Excel Functions
     srcArray = [
@@ -1378,34 +1350,119 @@ describe('Array', function () {
       + '=C10,="val is " & K2,=SUM(A2:L2),=TODAY()\r\n'
     );
 
-    // Empty rows
-    csvStr = ''
-      + 'A,B,C,D,E,F,G,H,I,J,K,L\r\n'
-      + '\r\n'
-      + '\r\n'
-      + '0,1,2,3,4,5,6,7,8,9,10,11\r\n';
-    expect(parseCSV(csvStr)).toEqual([
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
-    ]);
-    expect(parseCSV(csvStr, { addsEmptyRow: true })).toEqual([
-      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
-      [''],
-      [''],
-      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      ['']
-    ]);
-
-
     var errVals = [undefined, null, false, [], {}, 'a', 99, NaN, Infinity];
     errVals.forEach(function (val) {
       expect(_cb(stringifyCSV, val)).toThrowError();
     });
   });
+
+  test('parseCsvTo2DArray', function () {
+    var parseCSV = util.parseCsvTo2DArray;
+    var linesSet = [
+      'This CSV was output from Tuckn Hoge system',
+      'A,B,C,D,E,F,G,H,I,J,K,L',
+      '0,1,2,3,4,5,6,7,8,9,10,11',
+      'a,b,c,d,e,f,g,h,i,j,k,l',
+      '',
+      'true,false,null,undefined,NaN,Infinity',
+      '=SUM(X1:Y10),=TODAY(),2020/1/1,\'007,Has Space,日本語,I say "Yes!","Line',
+      'Break"'
+    ];
+    var parsed;
+
+    var csvStrCRLF = linesSet.join('\r\n');
+    parsed = parseCSV(csvStrCRLF);
+
+    expect(parsed).toEqual([
+      ['This CSV was output from Tuckn Hoge system'],
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+      ['true', 'false', 'null', 'undefined', 'NaN', 'Infinity'],
+      [
+        '=SUM(X1:Y10)',
+        '=TODAY()',
+        '2020/1/1',
+        '\'007',
+        'Has Space',
+        '日本語',
+        'I say "Yes!"',
+        '"Line\r\nBreak"'
+      ]
+    ]);
+
+    var tsvStrCRLF = csvStrCRLF.replace(/,/g, '\t');
+    parsed = parseCSV(tsvStrCRLF, { delimiter: '\t' });
+
+    expect(parsed).toEqual([
+      ['This CSV was output from Tuckn Hoge system'],
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+      ['true', 'false', 'null', 'undefined', 'NaN', 'Infinity'],
+      [
+        '=SUM(X1:Y10)',
+        '=TODAY()',
+        '2020/1/1',
+        '\'007',
+        'Has Space',
+        '日本語',
+        'I say "Yes!"',
+        '"Line\r\nBreak"'
+      ]
+    ]);
+
+    var csvStrLF = linesSet.join('\n');
+    parsed = parseCSV(csvStrLF, { lineEnding: '\n' });
+
+    expect(parsed).toEqual([
+      ['This CSV was output from Tuckn Hoge system'],
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+      ['true', 'false', 'null', 'undefined', 'NaN', 'Infinity'],
+      [
+        '=SUM(X1:Y10)',
+        '=TODAY()',
+        '2020/1/1',
+        '\'007',
+        'Has Space',
+        '日本語',
+        'I say "Yes!"',
+        '"Line\nBreak"'
+      ]
+    ]);
+
+    parsed = parseCSV(csvStrLF, { lineEnding: '\n', addsEmptyRow: true });
+
+    expect(parsed).toEqual([
+      ['This CSV was output from Tuckn Hoge system'],
+      ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'],
+      [''],
+      ['true', 'false', 'null', 'undefined', 'NaN', 'Infinity'],
+      [
+        '=SUM(X1:Y10)',
+        '=TODAY()',
+        '2020/1/1',
+        '\'007',
+        'Has Space',
+        '日本語',
+        'I say "Yes!"',
+        '"Line\nBreak"'
+      ]
+    ]);
+
+    var errVals = [undefined, null, false, [], {}, ['a'], 99, NaN, Infinity];
+    errVals.forEach(function (val) {
+      expect(_cb(parseCSV, val)).toThrowError();
+    });
+  });
 });
 
 describe('Util', function () {
-  test('uuidv4()', function () {
+  test('uuidv4', function () {
     var uuidv4 = util.uuidv4; // Shorthand
     var uuidv4RE = /^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i;
     var newId1 = uuidv4();

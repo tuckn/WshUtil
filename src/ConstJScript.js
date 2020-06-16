@@ -1,7 +1,7 @@
 ﻿/* eslint no-unused-vars:off */
 
 /**
- * The wrapper object for @tuckn/WshXxxx modules.
+ * The wrapper object for @tuckn/WshX series.
  *
  * @global
  * @namespace

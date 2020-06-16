@@ -43,7 +43,7 @@
     },
     "meta": {
       "title": "WshUtil",
-      "description": "The core module for @tuckn/WshXxxx and WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash).",
+      "description": "WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and the core module for @tuckn/Wsh series.",
       "keyword": "Windows, WSH, WSF, JScript, VBScript, modules, util"
     },
     "search": true,
