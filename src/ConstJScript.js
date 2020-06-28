@@ -1,13 +1,15 @@
 ﻿/* eslint no-unused-vars:off */
 
-/**
- * The wrapper object for @tuckn/WshX series.
- *
- * @global
- * @namespace
- * @type {object}
- */
-if (!Wsh) var Wsh = {};
+if (!Wsh) {
+  /**
+   * The wrapper object for @tuckn/WshX series.
+   *
+   * @global
+   * @namespace
+   * @type {object}
+   */
+  var Wsh = {};
+}
 
 (function () {
   if (Wsh && Wsh.Constants) return;

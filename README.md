@@ -1,6 +1,18 @@
 # WshUtil
 
-WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and the core module for @tuckn/Wsh series.
+WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and the core module for tuckn/Wsh series.
+
+## tuckn/Wsh series dependency
+
+[WshModeJs](https://github.com/tuckn/WshModeJs)  
+└─ [WshProcess](https://github.com/tuckn/WshProcess)  
+&emsp;&emsp;└─ [WshFileSystem](https://github.com/tuckn/WshFileSystem)  
+&emsp;&emsp;&emsp;&emsp;└─ [WshOS](https://github.com/tuckn/WshOS)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPath](https://github.com/tuckn/WshPath)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ WshUtil - This repository  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPolyfill](https://github.com/tuckn/WshPolyfill)  
+
+The upper layer module can use all the functions of the lower layer module.
 
 ## Operating environment
 
