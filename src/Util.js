@@ -2495,13 +2495,13 @@ parseCsvTo2DArray(csvTxt);
     }; // }}}
 
     var convLineToArray = function (rowStr, opt) { // {{{
-      var splitedVals = rowStr.split(delimiter);
+      var splitdVals = rowStr.split(delimiter);
       var cells = _obtain(opt, 'resolved', []);
       var isPending = _obtain(opt, 'isPending', false);
       var cell = _obtain(opt, 'pendingCell', '');
       var matchedDQ;
 
-      splitedVals.forEach(function (val) {
+      splitdVals.forEach(function (val) {
         matchedDQ = val.match(/"/g);
 
         if (!isPending && !matchedDQ) {
