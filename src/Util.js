@@ -1653,7 +1653,7 @@ var objSource = { a: 'A2', b: { p: 'Bp2' } };
 var mergedObj = merge(objTarget, objSource);
 // Returns: { a: 'A2', b: { p: 'Bp2', q: 'Bq1' } };
 
-console.log(objTarget === mergedObj); // true
+console.dir(objTarget === mergedObj); // true
 // The target Object is mutated
    * @function merge
    * @memberof Wsh.Util
@@ -1699,7 +1699,7 @@ console.dir(objCloned);
 //   a: [1, [2, 3]],
 //   o: { nA: 1, nB: { o2: 2 } } }
 
-console.log(objSource === objCloned); // false
+console.dir(objSource === objCloned); // false
    * @function cloneDeep
    * @memberof Wsh.Util
    * @param {any} val - The value

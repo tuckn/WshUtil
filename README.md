@@ -66,7 +66,7 @@ This allows the following functions to be used in _.\MyScript.js_.
 
 ## Usage
 
-Now _.\MyScript.js_ (JScript ) can use the useful functions.
+Now _.\MyScript.js_ (JScript) can use the useful functions.
 for example,
 
 ```js
@@ -117,6 +117,8 @@ _.parseTemplateLiteral('cp \\\\${comp}\\${share}\\${file} .\\tmp', schema);
 
 // 半角カナを全角に変換
 _.toZenkakuKana('もぅﾏﾁﾞ無理。'); // 'もぅマヂ無理'
+
+// and so on...
 ```
 
 Many other functions are added.
@@ -132,11 +134,11 @@ var map1 = array1.map(function(x) {
 });
 
 console.dir(map1);
-// Output: [2, 8, 18, 32]
+// Outputs: [2, 8, 18, 32]
 
 var strJson = JSON.stringify({ from: array1, to: map1 });
 console.log(strJson);
-// Output: '{"from":[1,4,9,16],"to":[2,8,18,32]}'
+// Outputs: '{"from":[1,4,9,16],"to":[2,8,18,32]}'
 
 // and so on...
 ```
