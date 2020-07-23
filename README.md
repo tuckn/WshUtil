@@ -37,7 +37,7 @@ or
 > git submodule add https://github.com/tuckn/WshUtil.git ./WshModules/WshUtil
 ```
 
-(3) Include _.\WshUtil\dist\bundle.js_ into your .wsf file.
+(3) Include _.\\WshUtil\\dist\\bundle.js_ into your .wsf file.
 For Example, if your file structure is
 
 ```console
@@ -62,17 +62,17 @@ The content of above _Run.wsf_ is
 ```
 
 I recommend this .wsf file encoding to be UTF-8 [BOM, CRLF].
-This allows the following functions to be used in _.\MyScript.js_.
+This allows the following functions to be used in _.\\MyScript.js_.
 
 ## Usage
 
-Now _.\MyScript.js_ (JScript) can use the useful functions.
+Now you can use `Wsh` object in _.\\MyScript.js_ (JScript).
 for example,
 
 ```js
 var _ = Wsh.Util; // Shorthand
 
-// Check deep strict equality
+// Checks deep strict equality
 _.isEqual([1, 2, 3], [1, 2, 3]); // true
 _.isEqual([1, 2, 3], [1, 2]); // false
 _.isEqual({ a: 'A', b: ['B'] }, { a: 'A', b: ['B'] }); // true
@@ -89,7 +89,7 @@ _.isEmpty(undefined); // true - Because non enumerable object
 _.isEmpty(null); // true
 _.isEmpty(true); // true
 
-// Get a value from a object
+// Gets a value from a object
 var obj = { a: 1, b: { B: 2 }, c: [3, 4] };
 _.get(obj, 'a'); // 1
 _.get(obj, 'Z'); // undefined
@@ -98,10 +98,10 @@ _.get(obj, 'b.B'); // 2
 _.get(obj, ['b', 'B']); // 2
 _.get(obj, 'c.1'); // 4
 
-// Create a unique ID
+// Creates a unique ID
 _.uuidv4(); // '9f1e53ba-3f08-4c9d-91c7-ad4226312f40'
 
-// Create a date string
+// Creates a date string
 _.createDateString(); // '20200528T065424+0900'
 _.createDateString('yyyy-MM'); // '2020-05'
 
@@ -143,10 +143,17 @@ console.log(strJson);
 // and so on...
 ```
 
+### Dependency Modules
+
+You can also use the following useful functions in _.\\MyScript.js_ (JScript).
+
+- [tuckn/WshPolyfill](https://github.com/tuckn/WshPolyfill)
+
 ## Documentation
 
-See all specifications [here](https://docs.tuckn.net/WshUtil)
-and also [WshPolyfill](https://docs.tuckn.net/WshPolyfill).
+See all specifications [here](https://docs.tuckn.net/WshOS) and also below.
+
+- [WshPolyfill](https://docs.tuckn.net/WshPolyfill)
 
 ## License
 
