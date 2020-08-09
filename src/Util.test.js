@@ -595,10 +595,13 @@ describe('String', function () {
     // Calculation
     expect(parse('#{yyyy-MM-1-dd}', dt)).toBe('2020-01-1-02');
     expect(parse('#{yyyy-[MM - 1]-dd}', dt)).toBe('2019-12-02');
+    expect(parse('#{yyyy-[MM - 11]-dd}', dt)).toBe('2019-02-02');
     expect(parse('#{yyyy}-#{[MM-1]}-#{dd}', dt)).toBe('2020-12-02');
     expect(parse('#{yy/M/[d - 2]}', dt)).toBe('19/12/31');
     expect(parse('#{yy}#{[MM * 4]}', dt)).toBe('2004');
     expect(parse('#{[yyyy + 4]}-#{MM}', dt)).toBe('2024-01');
+    expect(parse('D:\\#{yyyy}\\#{[MM - 1]}', dt)).toBe('D:\\2020\\12');
+    expect(parse('D:\\#{yyyy\\[MM - 1]}', dt)).toBe('D:\\2019\\12');
   });
 
   var numsStr = '0123456789';

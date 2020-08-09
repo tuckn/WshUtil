@@ -1146,7 +1146,7 @@
   }; // }}}
 
   // util.parseDateSchema {{{
-  var _reDateCal = new RegExp('\\[([yMdHms]+)\\s*([*+-])\\s*([0-9])+\\]');
+  var _reDateCal = new RegExp('\\[([yMdHms]+)\\s*([*+-])\\s*([0-9]+)\\]');
 
   /**
    * Parses the date schema to a date string.
@@ -1244,7 +1244,7 @@
    * @example
    * var parse = Wsh.Util.parseDateLiteral; // Shorthand
    *
-   * // If the current date 2020/1/2 15:4:5
+   * // If the current date is 2020/1/2 15:4:5
    * parse('#{yyyyMMdd}'); // '20200102'
    * parse('#{yyyy-MM-dd}'); // '2020-01-02'
    * parse('#{yyyy}-#{MM}-#{dd}');  // '2020-01-02'
