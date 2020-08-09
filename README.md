@@ -105,10 +105,14 @@ _.uuidv4(); // '9f1e53ba-3f08-4c9d-91c7-ad4226312f40'
 _.createDateString(); // '20200528T065424+0900'
 _.createDateString('yyyy-MM'); // '2020-05'
 
-// Parses a date schema string
-_.parseDatecode('${yyyy-MM-ddTHH:mm:ss}'); // '2020-01-02T15:04:05'
-_.parseDatecode('C:\\MyData\\${yyyy-MM-dd}.txt'); // 'C:\MyData\2020-01-02.txt'
-_.parseDatecode('\\\\MyNas\\${yyyy}\\${MM}\\${dd}'); // '\\MyNas\2020\01\02'
+// Parses the date template literal to a date string.
+_.parseDateLiteral('#{yyyy-MM-ddTHH:mm:ss}'); // '2020-01-02T15:04:05'
+_.parseDateLiteral('#{yyyy/M/d H:m:s}'); // '2020/1/2 15:4:5'
+_.parseDateLiteral('C:\\MyData\\#{yyyy-MM-dd}.txt'); // 'C:\MyData\2020-01-02.txt'
+_.parseDateLiteral('\\\\MyNas\\#{yyyy}\\#{MM}\\#{dd}'); // '\\MyNas\2020\01\02'
+_.parseDateLiteral('#{yyyy-[MM - 1]-dd}'); // '2019-12-02'
+_.parseDateLiteral('#{yy[MM * 4]}'); // '2004'
+
 
 // Converts a schema object to a string
 var schema = { comp: 'MYPC1234', share: 'C$', file: 'cache.db' };

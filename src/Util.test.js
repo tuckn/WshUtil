@@ -522,9 +522,12 @@ describe('String', function () {
     expect(createDateStr(null, dateObj)).toMatch(/20200102T150405\+\d{4}/);
     expect(createDateStr('yyyy-MM', dateObj)).toBe('2020-01');
     expect(createDateStr('yyyy/MM/dd', dateObj)).toBe('2020/01/02');
+    expect(createDateStr('yyyy/M/d', dateObj)).toBe('2020/1/2');
     expect(createDateStr('yy/MM/dd', dateObj)).toBe('20/01/02');
     expect(createDateStr('HH:mm:ss', dateObj)).toBe('15:04:05');
+    expect(createDateStr('H:m:s', dateObj)).toBe('15:4:5');
     expect(createDateStr('yyyyMMddTHHmmss', dateObj)).toBe('20200102T150405');
+    expect(createDateStr('yyyy/M/d H:m:s', dateObj)).toBe('2020/1/2 15:4:5');
   });
 
   test('parseTemplateLiteral', function () {
@@ -548,21 +551,54 @@ describe('String', function () {
     });
   });
 
-  test('parseDatecode', function () {
-    var parseDatecode = util.parseDatecode;
-    var dateObj = new Date(2020, 0, 2, 15, 4, 5); // @note 0 -> January
-
-    expect(parseDatecode('${yyyyMMdd}', dateObj)).toBe('20200102');
-    expect(parseDatecode('${yyyy-MM-dd}', dateObj)).toBe('2020-01-02');
-    expect(parseDatecode('${yyyy-MM-ddTHH:mm:ss}', dateObj)).toBe('2020-01-02T15:04:05');
-    expect(parseDatecode('${yyyyMMddTHHmmss+hhmm}', dateObj))
-        .toMatch(new RegExp('20200102T150405\\+\\d{4}'));
-    expect(parseDatecode('C:\\My Data\\${yyyy-MM-dd}.txt', dateObj)).toBe('C:\\My Data\\2020-01-02.txt');
-    expect(parseDatecode('\\\\MyNas\\${yyyy}\\${MM}\\${dd}', dateObj)).toBe('\\\\MyNas\\2020\\01\\02');
+  test('parseDateSchema', function () {
+    var parse = util.parseDateSchema;
 
     noneStrVals.forEach(function (val) {
-      expect(_cb(parseDatecode, val)).toThrowError();
+      expect(_cb(parse, val)).toThrowError();
     });
+
+    var dt = new Date(2020, 0, 2, 15, 4, 5); // @note 0 -> January
+
+    expect(parse('yyyyMMdd', dt)).toBe('20200102');
+    expect(parse('yyyy-MM-dd', dt)).toBe('2020-01-02');
+    expect(parse('yyyy-MM', dt)).toBe('2020-01');
+    expect(parse('yyyy-MM-1', dt)).toBe('2020-01-1');
+    expect(parse('yyyy-[MM - 1]', dt)).toBe('2019-12');
+    expect(parse('yyyy-[MM-1]', dt)).toBe('2019-12');
+    expect(parse('[yyyy + 4]-MM', dt)).toBe('2024-01');
+    expect(parse('yy[MM * 4]', dt)).toBe('2004');
+    expect(parse('yy/M/d', dt)).toBe('20/1/2');
+    expect(parse('yyyy-MM-ddTHH:mm:ss', dt)).toBe('2020-01-02T15:04:05');
+    expect(parse('yyyy/M/d H:m:s', dt)).toBe('2020/1/2 15:4:5');
+    expect(parse('yyyyMMddTHHmmss+hhmm', dt))
+        .toMatch(new RegExp('20200102T150405\\+\\d{4}'));
+    expect(parse('\\yyyy\\MM\\dd', dt)).toBe('\\2020\\01\\02');
+  });
+
+  test('parseDateLiteral', function () {
+    var parse = util.parseDateLiteral;
+
+    noneStrVals.forEach(function (val) {
+      expect(_cb(parse, val)).toThrowError();
+    });
+
+    var dt = new Date(2020, 0, 2, 15, 4, 5); // @note 0 -> January
+
+    expect(parse('#{yyyyMMdd}', dt)).toBe('20200102');
+    expect(parse('#{yyyy-MM-dd}', dt)).toBe('2020-01-02');
+    expect(parse('#{yyyy-MM-ddTHH:mm:ss}', dt)).toBe('2020-01-02T15:04:05');
+    expect(parse('#{yyyyMMddTHHmmss+hhmm}', dt))
+        .toMatch(new RegExp('20200102T150405\\+\\d{4}'));
+    expect(parse('C:\\My Data\\#{yyyy-MM-dd}.txt', dt)).toBe('C:\\My Data\\2020-01-02.txt');
+    expect(parse('\\\\MyNas\\#{yyyy}\\#{MM}\\#{dd}', dt)).toBe('\\\\MyNas\\2020\\01\\02');
+    // Calculation
+    expect(parse('#{yyyy-MM-1-dd}', dt)).toBe('2020-01-1-02');
+    expect(parse('#{yyyy-[MM - 1]-dd}', dt)).toBe('2019-12-02');
+    expect(parse('#{yyyy}-#{[MM-1]}-#{dd}', dt)).toBe('2020-12-02');
+    expect(parse('#{yy/M/[d - 2]}', dt)).toBe('19/12/31');
+    expect(parse('#{yy}#{[MM * 4]}', dt)).toBe('2004');
+    expect(parse('#{[yyyy + 4]}-#{MM}', dt)).toBe('2024-01');
   });
 
   var numsStr = '0123456789';

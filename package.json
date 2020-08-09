@@ -1,7 +1,7 @@
 {
   "name": "@tuckn/WshUtil",
   "description": "WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and the core module for @tuckn/Wsh series.",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "Tuckn <tuckn333+github@gmail.com>",
   "private": false,
   "license": "MIT",
@@ -40,6 +40,8 @@
     "test:name:types": ".\\scripts\\Test Util -t ^^types",
     "test:name:ScriptControl": ".\\scripts\\Test Util -t ScriptControl$",
     "test:name:Lang": ".\\scripts\\Test Util -t Lang$",
+    "test:name:parseDateSchema": ".\\scripts\\Test Util -t parseDateSchema$",
+    "test:name:parseDateLiteral": ".\\scripts\\Test Util -t parseDateLiteral$",
     "test:name:String": ".\\scripts\\Test Util -t String$",
     "test:name:Object": ".\\scripts\\Test Util -t Object$",
     "test:name:Collection": ".\\scripts\\Test Util -t Collection$",
