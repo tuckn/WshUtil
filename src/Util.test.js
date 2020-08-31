@@ -1118,6 +1118,12 @@ describe('Collection', function () {
     expect(includes(str, 'Bc', 'i')).toBe(true);
     expect(includes(str, 'Bc', null, 'i')).toBe(true);
 
+    str = 'ab cd';
+    expect(includes(str, ' ')).toBe(true);
+    expect(includes(str, 'B c')).toBe(false);
+    expect(includes(str, 'B c', 'i')).toBe(true);
+    expect(includes(str, 'B c', null, 'i')).toBe(true);
+
     // Array of Values
     var array = [1, 2, 3, 'four', [5]];
     expect(includes(array, 1)).toBe(true);
