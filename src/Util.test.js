@@ -304,6 +304,7 @@ describe('Lang', function () {
     expect(isEmpty([1])).toBe(false);
     expect(isEmpty({ a: 'A' })).toBe(false);
     expect(isEmpty('a')).toBe(false);
+    expect(isEmpty('2')).toBe(false);
   });
 
   test('isEqual isDeepStrictEqual', function () {

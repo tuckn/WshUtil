@@ -29,7 +29,7 @@ D:\> mkdir MyWshProject
 D:\> cd MyWshProject
 ```
 
-(2) Download this ZIP and unzipping or Use following `git` command.
+(2) Download this ZIP and unzip or Use the following `git` command.
 
 ```console
 > git clone https://github.com/tuckn/WshUtil.git ./WshModules/WshUtil
@@ -37,12 +37,24 @@ or
 > git submodule add https://github.com/tuckn/WshUtil.git ./WshModules/WshUtil
 ```
 
-(3) Include _.\\WshUtil\\dist\\bundle.js_ into your .wsf file.
-For Example, if your file structure is
+(3) Create your JScript (.js) file. For Example,
 
 ```console
 D:\MyWshProject\
-├─ Run.wsf
+├─ MyScript.js <- Your JScript code will be written in this.
+└─ WshModules\
+    └─ WshUtil\
+        └─ dist\
+          └─ bundle.js
+```
+
+I recommend JScript (.js) file encoding to be UTF-8 [BOM, CRLF].
+
+(4) Create your WSF packaging scripts file (.wsf).
+
+```console
+D:\MyWshProject\
+├─ Run.wsf <- WSH entry file
 ├─ MyScript.js
 └─ WshModules\
     └─ WshUtil\
@@ -50,7 +62,8 @@ D:\MyWshProject\
           └─ bundle.js
 ```
 
-The content of above _Run.wsf_ is
+And you should include _.../dist/bundle.js_ into the WSF file.
+For Example, The content of the above _Run.wsf_ is
 
 ```xml
 <package>
@@ -61,8 +74,9 @@ The content of above _Run.wsf_ is
 </package>
 ```
 
-I recommend this .wsf file encoding to be UTF-8 [BOM, CRLF].
-This allows the following functions to be used in _.\\MyScript.js_.
+I recommend this WSH file (.wsf) encoding to be UTF-8 [BOM, CRLF].
+
+Awesome! This WSH configuration allows you to use the following functions in JScript (_.\\MyScript.js_).
 
 ## Usage
 
@@ -85,6 +99,8 @@ _.isEmpty({}); // true
 _.isEmpty({ a: 'A' }); // false
 _.isEmpty(''); // true
 _.isEmpty('a'); // false
+_.isEmpty('3'); // false
+_.isEmpty(3); // true
 _.isEmpty(undefined); // true - Because non enumerable object
 _.isEmpty(null); // true
 _.isEmpty(true); // true
@@ -113,6 +129,32 @@ _.parseDateLiteral('\\\\MyNas\\#{yyyy}\\#{MM}\\#{dd}'); // '\\MyNas\2020\01\02'
 _.parseDateLiteral('#{yyyy-[MM - 1]-dd}'); // '2019-12-02'
 _.parseDateLiteral('#{yy[MM * 4]}'); // '2004'
 
+// Converts a value to formatted string.
+_.inspect(undefined); // 'undefined'
+_.inspect(null); // 'null'
+_.inspect(true); // 'true'
+_.inspect(NaN); // 'NaN'
+_.inspect('Foo'); // '"Foo"'
+_.inspect('  '); // '"  "'
+
+_.inspect([1, NaN, '3']);
+// '[
+//    0: 1,
+//    1: NaN,
+//    2: "3",
+// ]'
+
+_.inspect({ a: [1, 2], b: true, o: { c: 'C' } });
+// '{
+//   a: [
+//     0: 1,
+//     1: 2
+//   ],
+//   b: true,
+//   o: {
+//     c: "C"
+//   }
+// }'
 
 // Converts a schema object to a string
 var schema = { comp: 'MYPC1234', share: 'C$', file: 'cache.db' };
@@ -125,11 +167,11 @@ _.toZenkakuKana('もぅﾏﾁﾞ無理。'); // 'もぅマヂ無理'
 // and so on...
 ```
 
-Many other functions are added.
+Many other functions will be added.
 See the [documentation](https://docs.tuckn.net/WshUtil) for more details.
 
 And you can also use all [WshPolyfill](https://github.com/tuckn/WshPolyfill) functions.
-for example,
+For example,
 
 ```js
 var array1 = [1, 4, 9, 16];
@@ -149,13 +191,13 @@ console.log(strJson);
 
 ### Dependency Modules
 
-You can also use the following useful functions in _.\\MyScript.js_ (JScript).
+You can also use the following helper functions in your JScript (_.\\MyScript.js_).
 
 - [tuckn/WshPolyfill](https://github.com/tuckn/WshPolyfill)
 
 ## Documentation
 
-See all specifications [here](https://docs.tuckn.net/WshOS) and also below.
+See all specifications [here](https://docs.tuckn.net/WshUtil) and also below.
 
 - [WshPolyfill](https://docs.tuckn.net/WshPolyfill)
 

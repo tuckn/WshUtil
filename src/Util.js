@@ -1383,7 +1383,7 @@
    *
    * // true
    * isMailAddress('tuckn333@gmail.com');
-   * isMailAddress('tuckn333+github@gmail.com');
+   * isMailAddress('tuckn333@gmail.com');
    * isMailAddress('tuckn333@[11.22.33.44]');
    *
    * // false
