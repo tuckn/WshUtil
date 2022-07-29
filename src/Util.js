@@ -1715,7 +1715,7 @@
    * @private
    * @param {boolean} isDeep Recursively merges own
    * @param {object} target
-   * @param {...Object} [sources]
+   * @param {...object} [sources]
    * @returns {object} - The mutated target
    */
   function _merge (/* [isDeep, ]target, sources */) {
@@ -1770,7 +1770,7 @@
    * // The target Object is mutated
    * @function merge
    * @memberof Wsh.Util
-   * @param {...Object} objects
+   * @param {...object} objects
    * @returns {object} A merged object that is the 1st Object of the arguments
    */
   util.merge = function () {
@@ -1784,7 +1784,7 @@
    *
    * @function extend
    * @memberof Wsh.Util
-   * @param {...Object} objects
+   * @param {...object} objects
    * @returns {object} A merged object that is the 1st Object of the arguments
    */
   util.extend = function () {
@@ -1916,6 +1916,10 @@
    * util.get(src, 'b'); // { B: 2 }
    * util.get(src, 'b.B'); // 2
    * util.get(src, ['b', 'B']); // 2
+   *
+   * // If the result is Object or Array, it's called by reference.
+   * var getVal = util.get(src, 'b');
+   * if (getVal === src.b) // true
    *
    * util.get(src, 'c'); // [3, 4]
    * util.get(src, 'c.1') // 4

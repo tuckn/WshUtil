@@ -969,13 +969,27 @@ describe('Object', function () {
     expect(util.get(objSource, 'a')).toBe(1);
     expect(util.get(objSource, 'A')).toBe(undefined);
     expect(util.get(objSource, 'A', 'defVal')).toBe('defVal');
-    expect(util.get(objSource, 'b')).toEqual({ B: 2 });
+
+    // Call By Reference
+    var getObj = util.get(objSource, 'b');
+    expect(getObj).toEqual({ B: 2 });
+    expect(getObj).toBe(objSource.b); // The same object
+
     expect(util.get(objSource, 'b.B')).toBe(2);
     expect(util.get(objSource, ['b', 'B'])).toBe(2);
     expect(util.get(objSource, 'c')).toEqual([3, 4]);
     expect(util.get(objSource, 'c.1')).toEqual(4);
 
-    var objEmpLike = { u: undefined, n: null, f: false, t: true, z: 0, o: {}, a: [], s: '' };
+    var objEmpLike = {
+      u: undefined,
+      n: null,
+      f: false,
+      t: true,
+      z: 0,
+      o: {},
+      a: [],
+      s: ''
+    };
     expect(util.get(objEmpLike, 'u', 'defVal')).toBe('defVal');
     expect(util.get(objEmpLike, 'n', 'defVal')).toBe(null);
     expect(util.get(objEmpLike, 'f', 'defVal')).toBe(false);
@@ -1090,7 +1104,21 @@ describe('Object', function () {
     expect(obtain(objSource, 'c')).toEqual([3, 4]);
     expect(obtain(objSource, 'c.1')).toEqual(4);
 
-    var objEmpLike = { u: undefined, n: null, f: false, t: true, z: 0, o: {}, a: [], s: '' };
+    // Call By Reference
+    var getObj = obtain(objSource, 'b');
+    expect(getObj).toEqual({ B: 2 });
+    expect(getObj).toBe(objSource.b); // The same object
+
+    var objEmpLike = {
+      u: undefined,
+      n: null,
+      f: false,
+      t: true,
+      z: 0,
+      o: {},
+      a: [],
+      s: ''
+    };
     expect(obtain(objEmpLike, 'u', 'defVal')).toBe('defVal');
     expect(obtain(objEmpLike, 'n', 'defVal')).toBe('defVal');
     expect(obtain(objEmpLike, 'f', 'defVal')).toBe(false);
