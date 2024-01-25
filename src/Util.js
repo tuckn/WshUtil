@@ -1926,6 +1926,10 @@
    *
    * util.get({ empArray: [], empObj: {} }, 'empArray', 'def') // []
    * util.get({ empArray: [], empObj: {} }, 'empObj', 'def') // {}
+   *
+   * // Notice: When a prop name includes period
+   * var src = { '.git directory': 'C:\\repos\\My Code\\.git' };
+   * util.get(src, '.git directory'); // null
    * @function get
    * @memberof Wsh.Util
    * @param {object} obj - The object to query.

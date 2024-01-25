@@ -4,16 +4,16 @@ WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and 
 
 ## tuckn/Wsh series dependency
 
-[WshModeJs](https://github.com/tuckn/WshModeJs)  
-└─ [WshZLIB](https://github.com/tuckn/WshZLIB)  
-&emsp;└─ [WshNet](https://github.com/tuckn/WshNet)  
-&emsp;&emsp;└─ [WshChildProcess](https://github.com/tuckn/WshChildProcess)  
-&emsp;&emsp;&emsp;└─ [WshProcess](https://github.com/tuckn/WshProcess)  
-&emsp;&emsp;&emsp;&emsp;└─ [WshFileSystem](https://github.com/tuckn/WshFileSystem)  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshOS](https://github.com/tuckn/WshOS)  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPath](https://github.com/tuckn/WshPath)  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ WshUtil - This repository  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPolyfill](https://github.com/tuckn/WshPolyfill)  
+[WshModeJs](https://github.com/tuckn/WshModeJs)
+└─ [WshZLIB](https://github.com/tuckn/WshZLIB)
+&emsp;└─ [WshNet](https://github.com/tuckn/WshNet)
+&emsp;&emsp;└─ [WshChildProcess](https://github.com/tuckn/WshChildProcess)
+&emsp;&emsp;&emsp;└─ [WshProcess](https://github.com/tuckn/WshProcess)
+&emsp;&emsp;&emsp;&emsp;└─ [WshFileSystem](https://github.com/tuckn/WshFileSystem)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshOS](https://github.com/tuckn/WshOS)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPath](https://github.com/tuckn/WshPath)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ WshUtil - This repository
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPolyfill](https://github.com/tuckn/WshPolyfill)
 
 The upper layer module can use all the functions of the lower layer module.
 
@@ -169,7 +169,7 @@ _.toZenkakuKana('もぅﾏﾁﾞ無理。'); // 'もぅマヂ無理'
 ```
 
 Many other functions will be added.
-See the [documentation](https://docs.tuckn.net/WshUtil) for more details.
+See the [documentation](https://tuckn.net/docs/WshUtil/) for more details.
 
 And you can also use all [WshPolyfill](https://github.com/tuckn/WshPolyfill) functions.
 For example,
@@ -198,9 +198,9 @@ You can also use the following helper functions in your JScript (_.\\MyScript.js
 
 ## Documentation
 
-See all specifications [here](https://docs.tuckn.net/WshUtil) and also below.
+See all specifications [here](https://tuckn.net/docs/WshUtil/) and also below.
 
-- [WshPolyfill](https://docs.tuckn.net/WshPolyfill)
+- [WshPolyfill](https://tuckn.net/docs/WshPolyfill/)
 
 ## License
 
