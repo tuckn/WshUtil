@@ -4,15 +4,15 @@ WSH (Windows Script Host) utility library (similar to Node.js-Util, Lodash) and 
 
 ## tuckn/Wsh series dependency
 
-[WshModeJs](https://github.com/tuckn/WshModeJs)
-└─ [WshZLIB](https://github.com/tuckn/WshZLIB)
-&emsp;└─ [WshNet](https://github.com/tuckn/WshNet)
-&emsp;&emsp;└─ [WshChildProcess](https://github.com/tuckn/WshChildProcess)
-&emsp;&emsp;&emsp;└─ [WshProcess](https://github.com/tuckn/WshProcess)
-&emsp;&emsp;&emsp;&emsp;└─ [WshFileSystem](https://github.com/tuckn/WshFileSystem)
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshOS](https://github.com/tuckn/WshOS)
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPath](https://github.com/tuckn/WshPath)
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ WshUtil - This repository
+[WshModeJs](https://github.com/tuckn/WshModeJs)  
+└─ [WshZLIB](https://github.com/tuckn/WshZLIB)  
+&emsp;└─ [WshNet](https://github.com/tuckn/WshNet)  
+&emsp;&emsp;└─ [WshChildProcess](https://github.com/tuckn/WshChildProcess)  
+&emsp;&emsp;&emsp;└─ [WshProcess](https://github.com/tuckn/WshProcess)  
+&emsp;&emsp;&emsp;&emsp;└─ [WshFileSystem](https://github.com/tuckn/WshFileSystem)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshOS](https://github.com/tuckn/WshOS)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPath](https://github.com/tuckn/WshPath)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ WshUtil - This repository  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;└─ [WshPolyfill](https://github.com/tuckn/WshPolyfill)
 
 The upper layer module can use all the functions of the lower layer module.
